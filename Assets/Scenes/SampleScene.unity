@@ -1064,8 +1064,12 @@ MonoBehaviour:
   RightCoolDown: 4
   playerVariable: {fileID: 0}
   ThisRigbody: {fileID: 0}
+  playerJump: {fileID: 0}
   LTimer: 0
   RTimer: 0
+  Distance: 0
+  SkillBullet: {fileID: 855842585927422155, guid: 254c2123b76264a4ebeca125edc22010, type: 3}
+  AttackValue: 80
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
