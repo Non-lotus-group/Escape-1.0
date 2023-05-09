@@ -33,6 +33,7 @@ public class PlayerCollider : MonoBehaviour
             {
                 ThisRigbody.AddForce(playerVariable.GrivityDir * (playerVariable.JumpCount + 1), ForceMode2D.Impulse);
                 //will make player cannot move for few seconds
+
             }
         }
     }
