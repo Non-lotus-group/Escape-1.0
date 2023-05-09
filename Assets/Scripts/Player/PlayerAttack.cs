@@ -9,13 +9,14 @@ public class PlayerAttack : MonoBehaviour
     public GameObject BulletPrefeb;
     public PlayerJump playerJump;
     public bool AttackReady = true;
-    public float CoolDownCount = 4f;
+    public float CoolDownCount = 2f;
     public float attackValue = 45f;
     // Start is called before the first frame update
     void Start()
     {
         playerVariable = GetComponent<PlayerVariable>();
         ThisRigbody = GetComponent<Rigidbody2D>();
+        playerJump = GetComponent<PlayerJump>();
     }
 
     // Update is called once per frame
@@ -40,7 +41,6 @@ public class PlayerAttack : MonoBehaviour
         {
             if (AttackReady == true)
             {
-
                 GameObject instance = Instantiate(BulletPrefeb, playerJump.SelfPos, SwordRotation);
                 SwordAttack swordAttack = instance.GetComponent<SwordAttack>();
                 swordAttack.AttackValue = attackValue;

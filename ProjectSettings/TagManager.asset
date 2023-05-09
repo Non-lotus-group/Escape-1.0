@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - PlayerBullet
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
@@ -12,12 +14,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - 'Wall '
+  - PlayerBullet
+  - EnemyBullet
+  - Cycler
   - 
   - 
   - 
@@ -41,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: game
+    uniqueID: 2854485427
     locked: 0
