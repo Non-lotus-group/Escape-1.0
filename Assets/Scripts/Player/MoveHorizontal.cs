@@ -18,7 +18,7 @@ public class MoveHorizontal : MonoBehaviour
         if (playerVariable.IsWalking == true)
         {
             ThisRigbody.AddForce(-playerVariable.GrivityDir * 120f);
-            transform.Translate(Vector2.right * Input.GetAxis("Horizontal") *3f* Time.deltaTime);
+            transform.Translate(Vector2.right * Input.GetAxis("Horizontal") * 3f * Time.deltaTime);
             float Angle = Mathf.Atan2(playerVariable.GrivityDir.y, playerVariable.GrivityDir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, Angle - 90));
         }

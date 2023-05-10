@@ -63,7 +63,8 @@ public class PlayerJump : MonoBehaviour
         }
 
     }
-    IEnumerator SetColliderActive() {
+    IEnumerator SetColliderActive()
+    {
         yield return null;
         GetComponent<CapsuleCollider2D>().enabled = true;
     }
