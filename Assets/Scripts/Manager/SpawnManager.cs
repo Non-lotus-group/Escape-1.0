@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SpawnManager : MonoBehaviour
 {
     public GameObject[] Walls;
     public GameObject Squares;
-    public int tex;
-    public float i;
+    public int WallNum;
+    public Vector3 SpawnPos;
+    public Vector3 P1;
+    public Vector3 P2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,37 +22,32 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int CollNum = Random.Range(0, 12);
-        Collider2D Target = Walls[CollNum].GetComponent<Collider2D>();
-        Vector3 TarSca = Target.transform.localScale;
-        Vector3 FatherPos = Target.transform.position;
-        Vector3 forward = Target.transform.right;
-        Vector3 AinPos = FatherPos + (forward * TarSca.z);
-        //* o r-
-        float length = TarSca.z * 0.8f;
-        Vector3 p1 = AinPos + Target.transform.up.normalized * length;
-        Vector3 p2 = AinPos - Target.transform.up.normalized * length;
-        //get a point on line-p1-p2
-        // mathf normal p1-p2 and length random.range(length) then p1 + normal get point
-        Debug.DrawLine(p1, p2, Color.red, 100f);
+        GetLandSpawnPos();
     }
+
+    void GetLandSpawnPos()
+    {
+        GetLine();
+        GetPoint();
+    }
+
+    void GetLine()
+    {
+        WallNum = Random.Range(0, 12);
+        Collider2D Target = Walls[WallNum].GetComponent<Collider2D>();
+        float WallSide = Random.Range(-1, 1) < 0 ? -1 : 1;
+        float WallScale = Target.transform.localScale.x;
+        Vector3 FatherPos = Target.transform.position;
+        Vector3 FatherForword = Target.transform.right * WallSide;
+        Vector3 AimPos = FatherPos + (FatherForword * WallScale);
+        float LineLength = WallScale * 0.8f;
+        P1 = AimPos + Target.transform.up.normalized * LineLength;
+        P2 = AimPos - Target.transform.up.normalized * LineLength;
+        float LineTime = Random.Range(0f, 1f);
+        Vector3 LineNormal = P2 - P1;
+        SpawnPos = P1 + LineNormal * LineTime;
+    }
+    void GetPoint() { }
 }
-
-//    i += Time.deltaTime;
-//    if (i >= 0.5f)
-//    {
-
-
-//    }
-//    int CollNum = Random.Range(0, 12);
-//    Collider2D Target = Walls[CollNum].GetComponent<Collider2D>();
-//    Vector3 TarSca = Target.transform.localScale;
-//    Vector3 FatherPos = Target.transform.position;
-//    Vector3 Pos = FatherPos + new Vector3(Random.Range(-0.8f, 0.8f) * Target.transform.localScale.z, 1.1f * TarSca.z, 0);
-//    Vector3 normal = Pos - FatherPos;Debug.Log(Target.transform.right);
-//    float angle = Vector3.Angle(Pos, FatherPos);
-//    Vector3 normal2 = Quaternion.AngleAxis( angle, Target.transform.forward) * Target.transform.right * normal.magnitude;
-//    Debug.DrawLine(FatherPos, FatherPos+normal2, Color.red, 100f);
-//}
 
 
