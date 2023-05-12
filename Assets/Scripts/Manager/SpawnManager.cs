@@ -37,7 +37,6 @@ public class SpawnManager : MonoBehaviour
         GameObject EInstanitate = Instantiate(Squares, SpawnPos, Quaternion.identity);
         EnemyBase enemyBase = EInstanitate.GetComponent<EnemyBase>();
         enemyBase.GrivityDir = FatherForword;
-        Debug.DrawLine(SpawnPos, P1, Color.black, 10f);
         GetPoint();
     }
 
@@ -50,7 +49,7 @@ public class SpawnManager : MonoBehaviour
         Vector3 FatherPos = Target.transform.position;
         FatherForword = Target.transform.right * WallSide;
         Vector3 AimPos = FatherPos + (FatherForword * WallScale);
-        float LineLength = WallScale * 0.8f;
+        float LineLength = WallScale * 0.7f;
         P1 = AimPos + Target.transform.up.normalized * LineLength;
         P2 = AimPos - Target.transform.up.normalized * LineLength;
         float LineTime = Random.Range(0f, 1f);
