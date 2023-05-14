@@ -12,6 +12,7 @@ public class SpawnManager : MonoBehaviour
     public Vector3 P2;
     public Vector3 FatherForword;
     public float RollTime;
+    public BoxCollider2D[] Boxs;
 
     // Start is called before the first frame update
     void Start()
@@ -40,14 +41,14 @@ public class SpawnManager : MonoBehaviour
         GetPoint();
     }
 
-    void GetLine()
+    void GetLine()//get landEnemy's spawn pos
     {
         WallNum = Random.Range(0, 12);
         Collider2D Target = Walls[WallNum].GetComponent<Collider2D>();
         float WallSide = Random.Range(-1, 1) < 0 ? -1 : 1;
         float WallScale = Target.transform.localScale.x;
         Vector3 FatherPos = Target.transform.position;
-        FatherForword = Target.transform.right * WallSide;
+        FatherForword = Target.transform.right * WallSide*0.9f;
         Vector3 AimPos = FatherPos + (FatherForword * WallScale);
         float LineLength = WallScale * 0.7f;
         P1 = AimPos + Target.transform.up.normalized * LineLength;
@@ -56,7 +57,10 @@ public class SpawnManager : MonoBehaviour
         Vector3 LineNormal = P2 - P1;
         SpawnPos = P1 + LineNormal * LineTime;
     }
-    void GetPoint() { }
+    void GetPoint()// get boxcolliders spawn flyEnemies 
+    {
+
+    }
 }
 
 
