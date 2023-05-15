@@ -48,7 +48,7 @@ public class SpawnManager : MonoBehaviour
         float WallSide = Random.Range(-1, 1) < 0 ? -1 : 1;
         float WallScale = Target.transform.localScale.x;
         Vector3 FatherPos = Target.transform.position;
-        FatherForword = Target.transform.right * WallSide*0.9f;
+        FatherForword = Target.transform.right * WallSide * 0.9f;
         Vector3 AimPos = FatherPos + (FatherForword * WallScale);
         float LineLength = WallScale * 0.7f;
         P1 = AimPos + Target.transform.up.normalized * LineLength;
@@ -61,6 +61,11 @@ public class SpawnManager : MonoBehaviour
     {
 
     }
+}
+
+public class EnemyListOnWave
+{
+   
 }
 
 
