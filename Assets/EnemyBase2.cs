@@ -2,25 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBase : MonoBehaviour
+public class EnemyBase2 : MonoBehaviour
 {
     public Vector3 GrivityDir;
     public Rigidbody2D ThisRigidbody;
-    public bool AbleWalk;
     public GameObject Ebullet;
+    public float AttackCoolDown;
     // Start is called before the first frame update
     void Start()
     {
-        AbleWalk = false;
         ThisRigidbody = GetComponent<Rigidbody2D>();
-        Walk();
     }
 
     // Update is called once per frame
     void Update()
     {
         SetGravity();
-        Walk();
         Attack();
     }
 
@@ -40,33 +37,21 @@ public class EnemyBase : MonoBehaviour
         {
             ContactPoint2D contactPoint = other.contacts[0];
             GrivityDir = contactPoint.normal;
-            AbleWalk = true;
-        }
-    }
-    public void Walk()
-    {
-        if (AbleWalk == true)
-        {
-            transform.Translate(Vector3.right * Time.deltaTime);
-            if (ThisRigidbody.velocity.magnitude > 4f)
-            {
-                ThisRigidbody.velocity = ThisRigidbody.velocity * 0.5f;
-            }
         }
     }
     public void Attack()
     {
-        if (AbleWalk == false)
-        {
+        AttackCoolDown += Time.deltaTime;
+        if (AttackCoolDown >= 1) {
             if (Ebullet != null)
             {
                 Vector3 PlayerPos = GameObject.FindWithTag("Player").transform.position;
                 Vector3 ShootDir = (PlayerPos - transform.position).normalized;
                 GameObject instan = Instantiate(Ebullet, transform.position, Quaternion.identity);
                 instan.transform.Translate(ShootDir * 2f);
+                AttackCoolDown = 0;
             }
-
         }
-
+  
     }
 }

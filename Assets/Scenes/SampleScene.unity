@@ -847,6 +847,7 @@ GameObject:
   - component: {fileID: 454838900}
   - component: {fileID: 454838901}
   - component: {fileID: 454838903}
+  - component: {fileID: 454838904}
   m_Layer: 6
   m_Name: Capsule
   m_TagString: Player
@@ -991,6 +992,8 @@ MonoBehaviour:
   AbleJump: 0
   IsJump: 0
   JumpCount: 0
+  MaxHealth: 200
+  Health: 200
 --- !u!114 &454838898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1056,6 +1059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0754212e9ba1e47fca3a14fc52fd9b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pv: {fileID: 0}
 --- !u!61 &454838902
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1104,6 +1108,22 @@ MonoBehaviour:
   Distance: 0
   SkillBullet: {fileID: 855842585927422155, guid: 254c2123b76264a4ebeca125edc22010, type: 3}
   AttackValue: 80
+--- !u!114 &454838904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454838891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cc998bb9d9ca491496a19e8945de4b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
+  Pv: {fileID: 0}
+  Ph: {fileID: 0}
+  Health: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

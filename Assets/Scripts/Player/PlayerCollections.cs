@@ -12,6 +12,7 @@ public class PlayerCollections : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Pv = GetComponent<PlayerVariable>();
         Health = Pv.Health;
         HealingItem heal1 = new HealingItem();
         items.Add(new ItemList(heal1, heal1.GiveName(), 0));
