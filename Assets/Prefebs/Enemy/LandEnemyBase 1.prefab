@@ -138,6 +138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3025cda38f3c54dbda998fe6d0d89853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GrivityDir: {x: 0, y: 0, z: 0}
+  ThisRigidbody: {fileID: 0}
+  Ebullet: {fileID: 2585020492166466479, guid: 47c163c80b6c6480a964adf2da2c6ba8, type: 3}
+  AttackCoolDown: 0
 --- !u!1 &4035947156442864693
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    [System.Serializable]
+    public class Wave
+    {
+        public List<EnemyGroup> EnemyGroups;
+    }
+    [System.Serializable]
+    public class EnemyGroup
+    {
+        public string EnemyName;
+        public int EnemyCount;
+        public int SpawnCount;
+        public GameObject EnemyPrefebs;
+    }
+    public List<Wave> Waves;
+    public int CurrentWaveCount;//index of current wave
     public GameObject[] Walls;
     public GameObject Squares;
     public int WallNum;
@@ -13,11 +28,11 @@ public class SpawnManager : MonoBehaviour
     public Vector3 FatherForword;
     public float RollTime;
     public BoxCollider2D[] Boxs;
+    public float WaveInterval;
 
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -32,13 +47,12 @@ public class SpawnManager : MonoBehaviour
 
     }
 
-    void GetLandSpawnPos()
+    void GetLandSpawnPos()// spawn enemy1
     {
         GetLine();
         GameObject EInstanitate = Instantiate(Squares, SpawnPos, Quaternion.identity);
         EnemyBase enemyBase = EInstanitate.GetComponent<EnemyBase>();
         enemyBase.GrivityDir = FatherForword;
-        GetPoint();
     }
 
     void GetLine()//get landEnemy's spawn pos
@@ -57,15 +71,7 @@ public class SpawnManager : MonoBehaviour
         Vector3 LineNormal = P2 - P1;
         SpawnPos = P1 + LineNormal * LineTime;
     }
-    void GetPoint()// get boxcolliders spawn flyEnemies 
-    {
-
-    }
 }
 
-public class EnemyListOnWave
-{
-   
-}
 
 

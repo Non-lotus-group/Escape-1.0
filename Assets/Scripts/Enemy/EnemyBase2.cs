@@ -42,16 +42,19 @@ public class EnemyBase2 : MonoBehaviour
     public void Attack()
     {
         AttackCoolDown += Time.deltaTime;
-        if (AttackCoolDown >= 1) {
+        if (AttackCoolDown >= 1)
+        {
             if (Ebullet != null)
             {
                 Vector3 PlayerPos = GameObject.FindWithTag("Player").transform.position;
                 Vector3 ShootDir = (PlayerPos - transform.position).normalized;
-                GameObject instan = Instantiate(Ebullet, transform.position, Quaternion.identity);
+                float ShootAngle = Mathf.Atan2(ShootDir.y, ShootDir.x) * Mathf.Rad2Deg;
+                Quaternion BulletRotation = Quaternion.AngleAxis(ShootAngle, Vector3.forward);
+                GameObject instan = Instantiate(Ebullet, transform.position, BulletRotation);
                 instan.transform.Translate(ShootDir * 2f);
                 AttackCoolDown = 0;
             }
         }
-  
+
     }
 }
