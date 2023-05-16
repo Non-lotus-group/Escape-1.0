@@ -550,6 +550,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 390137dce8a734f8f984de4bd35fbdd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Waves:
+  - EnemyGroups: []
+  - EnemyGroups: []
+  - EnemyGroups: []
+  - EnemyGroups: []
+  - EnemyGroups: []
+  - EnemyGroups: []
+  - EnemyGroups: []
+  - EnemyGroups: []
+  - EnemyGroups: []
+  - EnemyGroups: []
+  - EnemyGroups: []
+  CurrentWaveCount: 0
   Walls:
   - {fileID: 1544927681}
   - {fileID: 647616342}
@@ -570,7 +583,13 @@ MonoBehaviour:
   P2: {x: 0, y: 0, z: 0}
   FatherForword: {x: 0, y: 0, z: 0}
   RollTime: 0
-  Boxs: []
+  Boxs:
+  - {fileID: 957576332}
+  - {fileID: 957576331}
+  - {fileID: 957576330}
+  - {fileID: 957576329}
+  - {fileID: 957576328}
+  WaveInterval: 0
 --- !u!1 &194806856
 GameObject:
   m_ObjectHideFlags: 0
