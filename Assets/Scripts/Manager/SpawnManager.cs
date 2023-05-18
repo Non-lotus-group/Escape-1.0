@@ -14,7 +14,7 @@ public class SpawnManager : MonoBehaviour
     {
         public string EnemyName;
         public int EnemyCount;
-        public int SpawnCount;
+        //public int SpawnCount;
         public GameObject EnemyPrefebs;
     }
 
@@ -31,7 +31,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //StartCoroutine(SpawnEnemyInWaves());
+        StartCoroutine(SpawnEnemyInWaves());
     }
 
     // Update is called once per frame
@@ -40,16 +40,15 @@ public class SpawnManager : MonoBehaviour
         RollTime += Time.deltaTime;
         if (RollTime >= 1f)
         {
-
             RollTime = 0;
         }
 
     }
 
-    ArrayList GetSpawnPosOfEnemyLand1(int ColliderNum)//get landEnemy's spawn pos
+    void GetSpawnPosOfEnemyLand1(int ColliderNum, List<Vector3> posList, List<Vector3> normalList)//get landEnemy's spawn pos
     {
         //WallNum = Random.Range(0, 12);
-        Collider2D Target = Walls[WallNum].GetComponent<Collider2D>();
+        Collider2D Target = Walls[ColliderNum].GetComponent<Collider2D>();
         float WallSide = Random.Range(-1, 1) < 0 ? -1 : 1;
         float WallScale = Target.transform.localScale.x;
         Vector3 FatherPos = Target.transform.position;
@@ -61,12 +60,9 @@ public class SpawnManager : MonoBehaviour
         float LineTime = Random.Range(0f, 1f);
         Vector3 LineNormal = P2 - P1;
         Vector3 SpawnPos = P1 + LineNormal * LineTime;
-        ArrayList SpawnInfo = new ArrayList
-        {
-            SpawnPos,
-            FatherForword
-        };
-        return SpawnInfo;
+        posList.Add(SpawnPos);
+        normalList.Add(FatherForword);
+
     }
     Vector2 GetSpawnPoint(int ColliderNum)
     {
@@ -76,63 +72,84 @@ public class SpawnManager : MonoBehaviour
             Random.Range(zonePosition.y - ZoneSize.y / 2f, zonePosition.y + ZoneSize.y / 2f));
         return spawnPosition;
     }
-    //IEnumerator SpawnEnemyInWaves()
-    //{
-    //    //round 1 there is 4 kind of enemies
-    //    int LandCollider = Random.Range(0, 12);
-    //    int FlyCollider = Random.Range(0, 6);
-    //    int E1Num = Waves[WaveInterval].EnemyGroups[0].EnemyCount;
-    //    int E2Num = Waves[WaveInterval].EnemyGroups[1].EnemyCount;
-    //    int E3Num = Waves[WaveInterval].EnemyGroups[2].EnemyCount;
-    //    int E4Num = Waves[WaveInterval].EnemyGroups[3].EnemyCount;
-    //    ArrayList E1List = new ArrayList();
-    //    ArrayList E2List = new ArrayList();
-    //    ArrayList E3List = new ArrayList();
-    //    ArrayList E4List = new ArrayList();
+    IEnumerator SpawnEnemyInWaves()
+    {
+        if (WaveInterval <= Waves.Count) {
 
-    //    if (E1Num != 0)
-    //    {
-    //        for (int i = 0; i < E1Num; i++)
-    //        {
-    //            E1List.Add(GetSpawnPosOfEnemyLand1(LandCollider));
-    //        }
-    //        for (int i = 0; i < E1Num; i++)
-    //        {
-    //            GameObject instance = Instantiate(Waves[WaveInterval].EnemyGroups[0].EnemyPrefebs, E1List[i].SpawnInfo.SpawnPos, Quaternion.identity);
-    //            EnemyBase enemyBase = instance.GetComponent<EnemyBase>();
-    //            enemyBase.GrivityDir = E1List[i]
-    //        }
-    //    }
-    //    if (E2Num != 0)
-    //    {
-    //        for (int i = 0; i < E2Num; i++)
-    //        {
-    //            ArrayList SpawnInfo = GetSpawnPosOfEnemyLand1(LandCollider);
-    //            E2List.Add(SpawnInfo);
-    //        }
-    //    }
-    //    if (E3Num != 0)
-    //    {
-    //        for (int i = 0; i < E3Num; i++)
-    //        {
-    //            Vector2 SpawnPos = GetSpawnPoint(FlyCollider);
+            Debug.Log("Enter Process");
+            //round 1 there is 4 kind of enemies
+            int LandCollider = Random.Range(0, 12);
+            int FlyCollider = Random.Range(0, 6);
+            Debug.Log(FlyCollider);
+            int E1Num = Waves[WaveInterval].EnemyGroups[0].EnemyCount;
+            int E2Num = Waves[WaveInterval].EnemyGroups[1].EnemyCount;
+            int E3Num = Waves[WaveInterval].EnemyGroups[2].EnemyCount;
+            int E4Num = Waves[WaveInterval].EnemyGroups[3].EnemyCount;
+            List<Vector3> PosList1 = new List<Vector3>();
+            List<Vector3> PosList2 = new List<Vector3>();
+            List<Vector3> PosList3 = new List<Vector3>();
+            List<Vector3> PosList4 = new List<Vector3>();
+            List<Vector3> NormalList1 = new List<Vector3>();
+            List<Vector3> NormalList2 = new List<Vector3>();
+            if (E1Num != 0)
+            {
+                for (int i = 0; i < E1Num; i++)
+                {
+                    GetSpawnPosOfEnemyLand1(LandCollider, PosList1, NormalList1);
+                }
+                for (int i = 0; i < E1Num; i++)
+                {
+                    GameObject instance = Instantiate(Waves[WaveInterval].EnemyGroups[0].EnemyPrefebs, PosList1[i], Quaternion.identity);
+                    EnemyBase enemyBase = instance.GetComponent<EnemyBase>();
+                    enemyBase.GrivityDir = NormalList1[i];
+                }
+            }
+            if (E2Num != 0)
+            {
+                for (int i = 0; i < E2Num; i++)
+                {
+                    GetSpawnPosOfEnemyLand1(LandCollider, PosList2, NormalList2);
+                }
+                for (int i = 0; i < E2Num; i++)
+                {
+                    GameObject instance = Instantiate(Waves[WaveInterval].EnemyGroups[1].EnemyPrefebs, PosList2[i], Quaternion.identity);
+                    EnemyBase2 enemyBase2 = instance.GetComponent<EnemyBase2>();
+                    enemyBase2.GrivityDir = NormalList2[i];
+                }
 
-    //            E3List.Add(SpawnPos);
-    //        }
-    //    }
-    //    if (E4Num != 0)
-    //    {
-    //        for (int i = 0; i < E4Num; i++)
-    //        {
-    //            Vector2 SpawnPos = GetSpawnPoint(FlyCollider);
+            }
+            if (E3Num != 0)
+            {
+                for (int i = 0; i < E3Num; i++)
+                {
+                    Vector2 SpawnPos = GetSpawnPoint(FlyCollider);
 
-    //            E4List.Add(SpawnPos);
-    //        }
-    //    }
+                    PosList3.Add(SpawnPos);
+                }
+                for (int i = 0; i < E3Num; i++)
+                {
+                    Instantiate(Waves[WaveInterval].EnemyGroups[2].EnemyPrefebs, PosList3[i], Quaternion.identity);
+                }
+            }
+            if (E4Num != 0)
+            {
+                for (int i = 0; i < E4Num; i++)
+                {
+                    Vector2 SpawnPos = GetSpawnPoint(FlyCollider);
 
-    //    yield return new WaitForSeconds(30f);
-    //    StartCoroutine(SpawnEnemyInWaves());
-    //}
+                    PosList4.Add(SpawnPos);
+                }
+                for (int i = 0; i < E4Num; i++)
+                {
+                    Instantiate(Waves[WaveInterval].EnemyGroups[3].EnemyPrefebs, PosList4[i], Quaternion.identity);
+                }
+
+            }
+            WaveInterval += 1;
+            yield return new WaitForSeconds(30f);
+            StartCoroutine(SpawnEnemyInWaves());
+        }
+    }
 }
 
 

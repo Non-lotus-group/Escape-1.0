@@ -8,6 +8,7 @@ public class EnemyBase2 : MonoBehaviour
     public Rigidbody2D ThisRigidbody;
     public GameObject Ebullet;
     public float AttackCoolDown;
+    public bool IsWalk = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,13 @@ public class EnemyBase2 : MonoBehaviour
     {
         SetGravity();
         Attack();
+        if (IsWalk == true)
+        {
+            if (ThisRigidbody.velocity.magnitude > 4f)
+            {
+                ThisRigidbody.velocity = ThisRigidbody.velocity * 0.5f;
+            }
+        }
     }
 
     void SetGravity()
@@ -37,24 +45,34 @@ public class EnemyBase2 : MonoBehaviour
         {
             ContactPoint2D contactPoint = other.contacts[0];
             GrivityDir = contactPoint.normal;
+            IsWalk = true;
         }
     }
     public void Attack()
     {
         AttackCoolDown += Time.deltaTime;
-        if (AttackCoolDown >= 1)
+        if (AttackCoolDown >= 2)
         {
             if (Ebullet != null)
             {
                 Vector3 PlayerPos = GameObject.FindWithTag("Player").transform.position;
                 Vector3 ShootDir = (PlayerPos - transform.position).normalized;
                 float ShootAngle = Mathf.Atan2(ShootDir.y, ShootDir.x) * Mathf.Rad2Deg;
-                Quaternion BulletRotation = Quaternion.AngleAxis(ShootAngle, Vector3.forward);
-                GameObject instan = Instantiate(Ebullet, transform.position, BulletRotation);
-                instan.transform.Translate(ShootDir * 2f);
+                //Quaternion BulletRotation = Quaternion.AngleAxis(ShootAngle, Vector3.forward);
+                GameObject instan = Instantiate(Ebullet, transform.position, Quaternion.identity);
+                instan.GetComponent<EnemyBullet>().PlayerDir = ShootDir;
+                Debug.DrawLine(transform.position, PlayerPos, Color.red, 100f);
                 AttackCoolDown = 0;
             }
         }
 
+    }
+    void Walk()
+    {
+
+        if (IsWalk == true)
+        {
+            transform.Translate(Vector3.right * Time.deltaTime*0.6f);
+        }
     }
 }

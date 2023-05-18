@@ -551,7 +551,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Waves:
-  - EnemyGroups: []
+  - EnemyGroups:
+    - EnemyName: Land1
+      EnemyCount: 0
+      EnemyPrefebs: {fileID: 4035947155723438301, guid: f0c259e24bf254aa4bf4092c91407e11, type: 3}
+    - EnemyName: Land2
+      EnemyCount: 2
+      EnemyPrefebs: {fileID: 4035947155723438301, guid: c6ce9a3ae328c438ea28a5efc2f6ad47, type: 3}
+    - EnemyName: Fly1
+      EnemyCount: 0
+      EnemyPrefebs: {fileID: 2999706550569332723, guid: d2dbe81f11577414fa4d2a8a233b5322, type: 3}
+    - EnemyName: Fly2
+      EnemyCount: 0
+      EnemyPrefebs: {fileID: 2999706550569332723, guid: 2ae0b45194cb54a279b9909579f559e5, type: 3}
   - EnemyGroups: []
   - EnemyGroups: []
   - EnemyGroups: []
@@ -578,10 +590,6 @@ MonoBehaviour:
   - {fileID: 164981142}
   Squares: {fileID: 4035947155723438301, guid: f0c259e24bf254aa4bf4092c91407e11, type: 3}
   WallNum: 0
-  SpawnPos: {x: 0, y: 0, z: 0}
-  P1: {x: 0, y: 0, z: 0}
-  P2: {x: 0, y: 0, z: 0}
-  FatherForword: {x: 0, y: 0, z: 0}
   RollTime: 0
   Boxs:
   - {fileID: 957576332}
