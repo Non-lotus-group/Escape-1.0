@@ -1151,6 +1151,7 @@ MonoBehaviour:
   Pv: {fileID: 0}
   Ph: {fileID: 0}
   Health: 0
+  StarBullet: {fileID: 7424217877405778369, guid: dc23591656fa24b66ac0c98b5fe7bfb5, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
