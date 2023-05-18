@@ -8,12 +8,14 @@ public class PlayerCollections : MonoBehaviour
 
     public PlayerVariable Pv;
     public PlayerHealth Ph;
+    public PlayerAttack Pa;
     public float Health;
     public GameObject StarBullet;
     // Start is called before the first frame update
     void Start()
     {
         Pv = GetComponent<PlayerVariable>();
+        Pa = GetComponent<PlayerAttack>();
         Health = Pv.Health;
         HealingItem heal1 = new HealingItem();
         JumpStars StarB = new JumpStars();
@@ -25,10 +27,7 @@ public class PlayerCollections : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach (ItemList i in items)
-        {
-            i.item.OnLand(Pv, i.stacks, true, Pv.GrivityDir, StarBullet);
-        }
+       
     }
 
     IEnumerator CallItemUpdate() {
@@ -39,4 +38,42 @@ public class PlayerCollections : MonoBehaviour
         yield return new WaitForSeconds(1);
         StartCoroutine(CallItemUpdate());
     }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Wall") {
+            Debug.Log("hit wall");
+            foreach (ItemList i in items)
+            {
+                Pv.AbleJump = true;
+                Debug.Log(Pv.ShootStars);
+                Debug.Log(Pv.AbleJump);
+                i.item.OnLand(Pv, i.stacks, Pv.AbleJump, Pv.ShootStars, Pv.GrivityDir, StarBullet, Pa.attackValue * 0.4f);
+            }
+        }
+    }
+
+    //private void OnCollisionStay2D(Collision2D other)
+    //{
+    //    if (other.gameObject.tag == "Wall")
+    //    {
+    //        ContactPoint2D contactPoint = other.contacts[0];
+    //        playerVariable.GrivityDir = contactPoint.normal;
+
+    //        if (CapCollider.IsTouching(other.collider))
+    //        {
+    //            playerVariable.IsWalking = true;
+    //            ThisRigbody.gravityScale = 0;
+
+    //            playerVariable.AbleJump = true;
+    //            playerVariable.IsJump = false;
+    //        }
+    //        else
+    //        {
+    //            ThisRigbody.AddForce(playerVariable.GrivityDir * (playerVariable.JumpCount + 1), ForceMode2D.Impulse);
+    //            //will make player cannot move for few seconds
+    //            // health -- 
+
+    //        }
+    //    }
+    //}
 }

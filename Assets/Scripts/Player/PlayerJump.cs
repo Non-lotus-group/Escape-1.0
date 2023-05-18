@@ -52,6 +52,7 @@ public class PlayerJump : MonoBehaviour
                 playerVariable.JumpCount++;
                 StartCoroutine(SetColliderActive());
                 Debug.Log(playerVariable.JumpCount);
+                playerVariable.ShootStars = true;
             }
         }
     }

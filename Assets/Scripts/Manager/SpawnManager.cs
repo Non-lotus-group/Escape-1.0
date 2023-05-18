@@ -14,6 +14,7 @@ public class SpawnManager : MonoBehaviour
     {
         public string EnemyName;
         public int EnemyCount;
+        public float HealthTime;
         //public int SpawnCount;
         public GameObject EnemyPrefebs;
     }
@@ -32,6 +33,7 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnEnemyInWaves());
+
     }
 
     // Update is called once per frame
@@ -91,6 +93,7 @@ public class SpawnManager : MonoBehaviour
             List<Vector3> PosList4 = new List<Vector3>();
             List<Vector3> NormalList1 = new List<Vector3>();
             List<Vector3> NormalList2 = new List<Vector3>();
+            Debug.Log(E1Num);
             if (E1Num != 0)
             {
                 for (int i = 0; i < E1Num; i++)
@@ -145,8 +148,9 @@ public class SpawnManager : MonoBehaviour
                 }
 
             }
-            WaveInterval += 1;
+
             yield return new WaitForSeconds(30f);
+            WaveInterval += 1;
             StartCoroutine(SpawnEnemyInWaves());
         }
     }
