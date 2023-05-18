@@ -41,13 +41,9 @@ public class PlayerCollections : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Wall") {
-            Debug.Log("hit wall");
             foreach (ItemList i in items)
             {
-                Pv.AbleJump = true;
-                Debug.Log(Pv.ShootStars);
-                Debug.Log(Pv.AbleJump);
-                i.item.OnLand(Pv, i.stacks, Pv.AbleJump, Pv.ShootStars, Pv.GrivityDir, StarBullet, Pa.attackValue * 0.4f);
+                i.item.OnLand(Pv, i.stacks,  Pv.GrivityDir, StarBullet, Pa.attackValue * 0.4f);
             }
         }
     }
