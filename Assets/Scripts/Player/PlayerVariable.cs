@@ -11,6 +11,7 @@ public class PlayerVariable : MonoBehaviour
     public int JumpCount = 0;
     public float MaxHealth = 200f;
     public float Health = 200f;
+    public float AttackScale;
     // Start is called before the first frame update
     void Start()
     {

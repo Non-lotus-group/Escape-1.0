@@ -8,9 +8,10 @@ public abstract class CollBase
     public virtual void Update(PlayerVariable player, int stacks) { }
     public virtual void OnHit(PlayerVariable player, EnemyBase enemy, int stacks) { }
     public virtual void Missile(PlayerVariable player, int stacks) { }
-    public virtual void OnKill() { }
+    public virtual void OnKill(PlayerVariable player ,int stacks) { }
     public virtual void OnLand(PlayerVariable player, int stacks, Vector3 PlayerNormal, GameObject Star, float Damage) { }
     public virtual void OnJump(PlayerVariable player, int stacks, bool AbleJump, int jumpCount, Vector3 jumpDir,ref int canJump) { }
+
 }
 public class HealingItem : CollBase
 {
@@ -77,4 +78,34 @@ public class JumpWhenFly : CollBase
     }
     //make sure thin function can only work jumpCount time before ableJump change to true
 
+}
+public class AttackScale : CollBase{
+    public override string GiveName()
+    {
+        return "Change Attack Scale";
+    }
+    public override void OnKill(PlayerVariable player, int stacks)
+    {
+        player.AttackScale += 0.1f;
+    }
+}
+public class SpawnMissile : CollBase {
+    public override string GiveName()
+    {
+        return "Spawn Missile";
+    }
+    public override void OnKill(PlayerVariable player, int stacks)
+    {
+       
+    }
+}
+public class AttackHeal : CollBase {
+    public override string GiveName()
+    {
+        throw new System.NotImplementedException();
+    }
+    public override void OnKill(PlayerVariable player, int stacks)
+    {
+        base.OnKill(player, stacks);
+    }
 }
