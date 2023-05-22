@@ -562,6 +562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1030732219064032bfb442f9263bec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ebullet: {fileID: 2585020492166466479, guid: 47c163c80b6c6480a964adf2da2c6ba8, type: 3}
 --- !u!114 &7477516995013069351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,5 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0d8a6cfcebf24e689ad96f720c8e292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
   MaxHealth: 100
   Health: 100
+  items: []

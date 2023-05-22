@@ -18,6 +18,16 @@ public class PlayerHealth : MonoBehaviour
         if (Pv.Health >= Pv.MaxHealth)
         {
             Pv.Health = Pv.MaxHealth;
+
+        }
+        if (Pv.Health <= 0) {
+            Destroy(this.gameObject);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "EnemyBullet") {
+            Pv.Health -= collision.GetComponent<EnemyBullet>().Attack;
         }
     }
 }

@@ -11,7 +11,7 @@ public class EnemyHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Player = GetComponent<PlayerVariable>();
+        Player = GameObject.FindWithTag("Player").GetComponent<PlayerVariable>();
         AttackScale attackScale = new AttackScale();
         SpawnMissile spawnMissile = new SpawnMissile();
         AttackHeal attackHeal = new AttackHeal();

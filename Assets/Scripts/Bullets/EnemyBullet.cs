@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     public Vector3 PlayerDir;
+    public float Attack;
     // Start is called before the first frame update
     void Start()
     {

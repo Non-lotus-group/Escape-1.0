@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FlyShootEnemy : MonoBehaviour
 {
+    public GameObject Ebullet;
+    public float AttackCoolDown = 3f;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,19 @@ public class FlyShootEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Attack();
+    }
+    void Attack() {
+        AttackCoolDown += Time.deltaTime;
+        if (AttackCoolDown >= 2)
+        {
+            if (Ebullet != null)
+            {
+                Vector3 PlayerDir = (GameObject.FindWithTag("Player").transform.position - transform.position).normalized;
+                GameObject instance = GameObject.Instantiate(Ebullet, transform.position, Quaternion.identity);
+                instance.GetComponent<EnemyBullet>().PlayerDir = PlayerDir;
+                AttackCoolDown = 0;
+            }
+        }
     }
 }

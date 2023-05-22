@@ -554,15 +554,19 @@ MonoBehaviour:
   - EnemyGroups:
     - EnemyName: Land1
       EnemyCount: 0
+      HealthTime: 0
       EnemyPrefebs: {fileID: 4035947155723438301, guid: f0c259e24bf254aa4bf4092c91407e11, type: 3}
     - EnemyName: Land2
-      EnemyCount: 2
+      EnemyCount: 0
+      HealthTime: 0
       EnemyPrefebs: {fileID: 4035947155723438301, guid: c6ce9a3ae328c438ea28a5efc2f6ad47, type: 3}
     - EnemyName: Fly1
       EnemyCount: 0
+      HealthTime: 0
       EnemyPrefebs: {fileID: 2999706550569332723, guid: d2dbe81f11577414fa4d2a8a233b5322, type: 3}
     - EnemyName: Fly2
-      EnemyCount: 0
+      EnemyCount: 10
+      HealthTime: 0
       EnemyPrefebs: {fileID: 2999706550569332723, guid: 2ae0b45194cb54a279b9909579f559e5, type: 3}
   - EnemyGroups: []
   - EnemyGroups: []
@@ -1021,6 +1025,8 @@ MonoBehaviour:
   JumpCount: 0
   MaxHealth: 200
   Health: 200
+  AttackScale: 0
+  Missile: {fileID: 6488029177356164274, guid: aac2e068ff6d549d2a9254642b8d083a, type: 3}
 --- !u!114 &454838898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1150,6 +1156,8 @@ MonoBehaviour:
   items: []
   Pv: {fileID: 0}
   Ph: {fileID: 0}
+  Pa: {fileID: 0}
+  Pj: {fileID: 0}
   Health: 0
   StarBullet: {fileID: 7424217877405778369, guid: dc23591656fa24b66ac0c98b5fe7bfb5, type: 3}
 --- !u!1 &519420028

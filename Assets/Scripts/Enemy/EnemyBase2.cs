@@ -61,7 +61,6 @@ public class EnemyBase2 : MonoBehaviour
                 //Quaternion BulletRotation = Quaternion.AngleAxis(ShootAngle, Vector3.forward);
                 GameObject instan = Instantiate(Ebullet, transform.position, Quaternion.identity);
                 instan.GetComponent<EnemyBullet>().PlayerDir = ShootDir;
-                Debug.DrawLine(transform.position, PlayerPos, Color.red, 100f);
                 AttackCoolDown = 0;
             }
         }
