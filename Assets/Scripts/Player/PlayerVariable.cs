@@ -12,6 +12,7 @@ public class PlayerVariable : MonoBehaviour
     public float MaxHealth = 200f;
     public float Health = 200f;
     public float AttackScale;
+    public GameObject Missile;
     // Start is called before the first frame update
     void Start()
     {

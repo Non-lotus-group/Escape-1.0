@@ -6,7 +6,7 @@ public abstract class CollBase
 {
     public abstract string GiveName();
     public virtual void Update(PlayerVariable player, int stacks) { }
-    public virtual void OnHit(PlayerVariable player, EnemyBase enemy, int stacks) { }
+    public virtual void OnHit(PlayerVariable player, EnemyHealth enemyHealth, int stacks) { }
     public virtual void Missile(PlayerVariable player, int stacks) { }
     public virtual void OnKill(PlayerVariable player ,int stacks,GameObject Iobject,EnemyHealth enemyHealth) { }
     public virtual void OnLand(PlayerVariable player, int stacks, Vector3 PlayerNormal, GameObject Star, float Damage) { }
@@ -107,7 +107,7 @@ public class AttackHeal : CollBase {
     {
         return "Heal When Attack";
     }
-    public override void OnHit(PlayerVariable player, EnemyBase enemy, int stacks)
+    public override void OnHit(PlayerVariable player, EnemyHealth enemyHealth, int stacks)
     {
         player.Health += 0.5f * stacks;
     }
