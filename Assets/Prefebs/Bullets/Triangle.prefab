@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 4691025932878212118}
   - component: {fileID: 3309749584428874568}
   - component: {fileID: 2021797477574879443}
-  m_Layer: 0
+  - component: {fileID: 8574264730336262867}
+  m_Layer: 9
   m_Name: Triangle
-  m_TagString: Untagged
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,3 +151,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 0
   Rotation: 0
+--- !u!114 &8574264730336262867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7424217877405778369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cee73bf29f2894634bb4da83d5e83312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

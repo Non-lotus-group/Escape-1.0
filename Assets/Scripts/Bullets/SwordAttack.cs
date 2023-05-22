@@ -22,9 +22,10 @@ public class SwordAttack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("EnemyBallet"))
+        if (other.CompareTag("EnemyBullet"))
         {
             Destroy(other.gameObject);
         }
+        else { }
     }
 }

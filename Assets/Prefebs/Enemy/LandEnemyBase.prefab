@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 154817503644227047}
   - component: {fileID: -7801961994987979220}
   - component: {fileID: -3676398648859003220}
+  - component: {fileID: -2808160367992810228}
   m_Layer: 7
   m_Name: LandEnemyBase
   m_TagString: Enemy
@@ -142,6 +143,20 @@ MonoBehaviour:
   ThisRigidbody: {fileID: 0}
   AbleWalk: 1
   Ebullet: {fileID: 0}
+--- !u!114 &-2808160367992810228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4035947155723438301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d8a6cfcebf24e689ad96f720c8e292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 100
+  Health: 100
 --- !u!1 &4035947156442864693
 GameObject:
   m_ObjectHideFlags: 0

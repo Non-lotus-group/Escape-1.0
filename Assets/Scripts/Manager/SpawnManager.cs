@@ -77,8 +77,6 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SpawnEnemyInWaves()
     {
         if (WaveInterval <= Waves.Count) {
-
-            Debug.Log("Enter Process");
             //round 1 there is 4 kind of enemies
             int LandCollider = Random.Range(0, 12);
             int FlyCollider = Random.Range(0, 6);
@@ -93,7 +91,6 @@ public class SpawnManager : MonoBehaviour
             List<Vector3> PosList4 = new List<Vector3>();
             List<Vector3> NormalList1 = new List<Vector3>();
             List<Vector3> NormalList2 = new List<Vector3>();
-            Debug.Log(E1Num);
             if (E1Num != 0)
             {
                 for (int i = 0; i < E1Num; i++)

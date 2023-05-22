@@ -349,6 +349,7 @@ GameObject:
   - component: {fileID: -161456272809627082}
   - component: {fileID: -5216353553553496183}
   - component: {fileID: 8962268284640290873}
+  - component: {fileID: 2957195647392153897}
   m_Layer: 7
   m_Name: SelfExplodeFly
   m_TagString: Enemy
@@ -477,6 +478,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3002aa79cef4426a792d3eab4d5cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2957195647392153897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2999706550569332723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d8a6cfcebf24e689ad96f720c8e292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 100
+  Health: 100
 --- !u!1 &3198002989996822920
 GameObject:
   m_ObjectHideFlags: 0

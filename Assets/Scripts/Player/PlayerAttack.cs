@@ -43,7 +43,8 @@ public class PlayerAttack : MonoBehaviour
             {
                 GameObject instance = Instantiate(BulletPrefeb, playerJump.SelfPos, SwordRotation);
                 SwordAttack swordAttack = instance.GetComponent<SwordAttack>();
-                swordAttack.AttackValue = attackValue;
+                PBattack pBattack = instance.GetComponent<PBattack>();
+                pBattack.Attack = attackValue;
                 swordAttack.transform.localScale *= 1 + playerVariable.AttackScale;
                 AttackReady = false;
             }

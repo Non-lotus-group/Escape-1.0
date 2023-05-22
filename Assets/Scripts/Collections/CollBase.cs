@@ -8,7 +8,7 @@ public abstract class CollBase
     public virtual void Update(PlayerVariable player, int stacks) { }
     public virtual void OnHit(PlayerVariable player, EnemyBase enemy, int stacks) { }
     public virtual void Missile(PlayerVariable player, int stacks) { }
-    public virtual void OnKill(PlayerVariable player ,int stacks) { }
+    public virtual void OnKill(PlayerVariable player ,int stacks,GameObject Iobject,EnemyHealth enemyHealth) { }
     public virtual void OnLand(PlayerVariable player, int stacks, Vector3 PlayerNormal, GameObject Star, float Damage) { }
     public virtual void OnJump(PlayerVariable player, int stacks, bool AbleJump, int jumpCount, Vector3 jumpDir,ref int canJump) { }
 
@@ -40,7 +40,7 @@ public class JumpStars : CollBase
             Vector3 StarDir = PlayerNormal + (Random.Range(-3f, 3f) * player.transform.right);
             NewStar.GetComponent<StarBullet>().GetComponent<Rigidbody2D>().AddForce(StarForce * StarDir, ForceMode2D.Impulse);
             NewStar.GetComponent<StarBullet>().Rotation = Random.Range(50f, 280f);
-            NewStar.GetComponent<StarBullet>().Damage = Damage;
+            NewStar.GetComponent<PBattack>().Attack = Damage;
             NewStar.GetComponent<SpriteRenderer>().color = Random.Range(-1, 1) < 0 ? Color.red : Color.yellow;
             float ScaleOfStar = Random.Range(0.8f, 2f);
             NewStar.transform.localScale = new Vector3(ScaleOfStar, ScaleOfStar, ScaleOfStar);
@@ -61,7 +61,6 @@ public class JumpWhenFly : CollBase
         {
             canJump = stacks;
             hasAssignedCanJump = true;
-            Debug.Log(canJump);
         }
 
         if (AbleJump == false && stacks > 0 && Input.GetKeyDown(KeyCode.Space) && canJump>=0)
@@ -84,9 +83,9 @@ public class AttackScale : CollBase{
     {
         return "Change Attack Scale";
     }
-    public override void OnKill(PlayerVariable player, int stacks)
+    public override void OnKill(PlayerVariable player, int stacks, GameObject Iobject, EnemyHealth enemyHealth)
     {
-        player.AttackScale += 0.1f;
+        player.AttackScale += 0.05f;
     }
 }
 public class SpawnMissile : CollBase {
@@ -94,18 +93,23 @@ public class SpawnMissile : CollBase {
     {
         return "Spawn Missile";
     }
-    public override void OnKill(PlayerVariable player, int stacks)
+    public override void OnKill(PlayerVariable player ,int stacks,GameObject Iobject,EnemyHealth enemyHealth)
     {
-       
+        if (stacks != 0) {
+            for (int i = 0; i < stacks; i++) {
+                GameObject Missile = Object.Instantiate(Iobject, player.transform.position, Quaternion.identity);
+            }
+        }
     }
 }
 public class AttackHeal : CollBase {
     public override string GiveName()
     {
-        throw new System.NotImplementedException();
+        return "Heal When Attack";
     }
-    public override void OnKill(PlayerVariable player, int stacks)
+    public override void OnHit(PlayerVariable player, EnemyBase enemy, int stacks)
     {
-        base.OnKill(player, stacks);
+        player.Health += 0.5f * stacks;
     }
+
 }
