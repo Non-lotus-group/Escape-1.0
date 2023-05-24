@@ -78,7 +78,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (WaveInterval <= Waves.Count) {
             //round 1 there is 4 kind of enemies
-            int FlyCollider = Random.Range(0, 6);
+
             Debug.Log(FlyCollider);
             int E1Num = Waves[WaveInterval].EnemyGroups[0].EnemyCount;
             int E2Num = Waves[WaveInterval].EnemyGroups[1].EnemyCount;
@@ -123,6 +123,7 @@ public class SpawnManager : MonoBehaviour
             {
                 for (int i = 0; i < E3Num; i++)
                 {
+                    int FlyCollider = Random.Range(0, 6);
                     Vector2 SpawnPos = GetSpawnPoint(FlyCollider);
 
                     PosList3.Add(SpawnPos);
@@ -136,6 +137,7 @@ public class SpawnManager : MonoBehaviour
             {
                 for (int i = 0; i < E4Num; i++)
                 {
+                    int FlyCollider = Random.Range(0, 6);
                     Vector2 SpawnPos = GetSpawnPoint(FlyCollider);
 
                     PosList4.Add(SpawnPos);

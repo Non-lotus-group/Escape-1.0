@@ -6,11 +6,10 @@ public abstract class CollBase
 {
     public abstract string GiveName();
     public virtual void Update(PlayerVariable player, int stacks) { }
-    public virtual void OnHit(PlayerVariable player, EnemyHealth enemyHealth, int stacks) { }
-    public virtual void Missile(PlayerVariable player, int stacks) { }
-    public virtual void OnKill(PlayerVariable player ,int stacks,GameObject Iobject,EnemyHealth enemyHealth) { }
+    public virtual void OnHit(PlayerVariable player, int stacks) { }
+    public virtual void OnKill(PlayerVariable player, int stacks, GameObject Iobject) { }
     public virtual void OnLand(PlayerVariable player, int stacks, Vector3 PlayerNormal, GameObject Star, float Damage) { }
-    public virtual void OnJump(PlayerVariable player, int stacks, bool AbleJump, int jumpCount, Vector3 jumpDir,ref int canJump) { }
+    public virtual void OnJump(PlayerVariable player, int stacks, bool AbleJump, int jumpCount, Vector3 jumpDir, ref int canJump) { }
 
 }
 public class HealingItem : CollBase
@@ -55,7 +54,7 @@ public class JumpWhenFly : CollBase
     {
         return "Fly Jump";
     }
-    public override void OnJump(PlayerVariable player, int stacks, bool AbleJump, int jumpCount, Vector3 jumpDir,ref int canJump)
+    public override void OnJump(PlayerVariable player, int stacks, bool AbleJump, int jumpCount, Vector3 jumpDir, ref int canJump)
     {
         if (!hasAssignedCanJump)
         {
@@ -63,14 +62,15 @@ public class JumpWhenFly : CollBase
             hasAssignedCanJump = true;
         }
 
-        if (AbleJump == false && stacks > 0 && Input.GetKeyDown(KeyCode.Space) && canJump>=0)
+        if (AbleJump == false && stacks > 0 && Input.GetKeyDown(KeyCode.Space) && canJump >= 0)
         {
             player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             player.GetComponent<Rigidbody2D>().AddForce(jumpDir * (jumpCount + 1), ForceMode2D.Impulse);
             canJump--;
             Debug.Log(canJump);
         }
-        else if (AbleJump == true) {
+        else if (AbleJump == true)
+        {
             canJump = jumpCount;
             hasAssignedCanJump = false;
         }
@@ -78,7 +78,8 @@ public class JumpWhenFly : CollBase
     //make sure thin function can only work jumpCount time before ableJump change to true
 
 }
-public class AttackScale : CollBase{
+public class AttackScale : CollBase
+{
     public override string GiveName()
     {
         return "Change Attack Scale";
@@ -88,41 +89,32 @@ public class AttackScale : CollBase{
         player.AttackScale = stacks * 2f;
     }
 }
-public class SpawnMissile : CollBase {
+public class SpawnMissile : CollBase
+{
     public override string GiveName()
     {
         return "Spawn Missile";
     }
-    public override void OnKill(PlayerVariable player ,int stacks,GameObject Iobject,EnemyHealth enemyHealth)
+    public override void OnKill(PlayerVariable player, int stacks, GameObject Iobject)
     {
-        if (stacks != 0) {
-            for (int i = 0; i < stacks; i++) {
+        if (stacks != 0)
+        {
+            for (int i = 0; i < stacks; i++)
+            {
                 GameObject Missile = Object.Instantiate(Iobject, player.transform.position, Quaternion.identity);
             }
         }
     }
 }
-public class AttackHeal : CollBase {
+public class AttackHeal : CollBase
+{
     public override string GiveName()
     {
         return "Heal When Attack";
     }
-    public override void OnHit(PlayerVariable player, EnemyHealth enemyHealth, int stacks)
+    public override void OnHit(PlayerVariable player, int stacks)
     {
         player.Health += 0.5f * stacks;
     }
 
-}
-public class AttackCoolDown : CollBase {
-    public override string GiveName()
-    {
-        return "Down Attack Cool Down";
-    }
-    public override void Update(PlayerVariable player, int stacks)
-    {
-        if (stacks != 0) {
-            player.RealCoolDown = (float)(player.CoolDownCount * 0.7 * stacks);
-        }
-
-    }
 }
