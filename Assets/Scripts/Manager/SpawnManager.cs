@@ -78,7 +78,6 @@ public class SpawnManager : MonoBehaviour
     {
         if (WaveInterval <= Waves.Count) {
             //round 1 there is 4 kind of enemies
-            int LandCollider = Random.Range(0, 12);
             int FlyCollider = Random.Range(0, 6);
             Debug.Log(FlyCollider);
             int E1Num = Waves[WaveInterval].EnemyGroups[0].EnemyCount;
@@ -95,6 +94,7 @@ public class SpawnManager : MonoBehaviour
             {
                 for (int i = 0; i < E1Num; i++)
                 {
+                    int LandCollider = Random.Range(0, 12);
                     GetSpawnPosOfEnemyLand1(LandCollider, PosList1, NormalList1);
                 }
                 for (int i = 0; i < E1Num; i++)
@@ -108,6 +108,7 @@ public class SpawnManager : MonoBehaviour
             {
                 for (int i = 0; i < E2Num; i++)
                 {
+                    int LandCollider = Random.Range(0, 12);
                     GetSpawnPosOfEnemyLand1(LandCollider, PosList2, NormalList2);
                 }
                 for (int i = 0; i < E2Num; i++)

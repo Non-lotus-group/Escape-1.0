@@ -9,11 +9,12 @@ public class PlayerAttack : MonoBehaviour
     public GameObject BulletPrefeb;
     public PlayerJump playerJump;
     public bool AttackReady = true;
-    public float CoolDownCount = 2f;
     public float attackValue = 45f;
+    public float CoolDownCount;
     // Start is called before the first frame update
     void Start()
     {
+
         playerVariable = GetComponent<PlayerVariable>();
         ThisRigbody = GetComponent<Rigidbody2D>();
         playerJump = GetComponent<PlayerJump>();
@@ -23,6 +24,7 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         Attack();
+        
     }
 
     void Attack()

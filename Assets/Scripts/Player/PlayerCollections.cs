@@ -23,9 +23,13 @@ public class PlayerCollections : MonoBehaviour
         HealingItem heal1 = new HealingItem();
         JumpStars StarB = new JumpStars();
         JumpWhenFly JumpF = new JumpWhenFly();
+        AttackScale attackScale = new AttackScale();
+        AttackCoolDown attackCoolDown = new AttackCoolDown();
         items.Add(new ItemList(heal1, heal1.GiveName(), 0));
         items.Add(new ItemList(StarB, StarB.GiveName(), 2));
         items.Add(new ItemList(JumpF, JumpF.GiveName(), 2));
+        items.Add(new ItemList(attackScale, attackScale.GiveName(), 0));
+        items.Add(new ItemList(attackCoolDown, attackCoolDown.GiveName(), 0));
         StartCoroutine(CallItemUpdate());
     }
 
@@ -35,6 +39,7 @@ public class PlayerCollections : MonoBehaviour
         foreach (ItemList i in items)
         {
             i.item.OnJump(Pv, i.stacks, Pv.AbleJump, Pv.JumpCount, Pj.JumpDir,ref JumpRef);
+            i.item.Update(Pv, i.stacks);
         }
     }
 

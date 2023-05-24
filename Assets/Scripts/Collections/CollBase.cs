@@ -83,9 +83,9 @@ public class AttackScale : CollBase{
     {
         return "Change Attack Scale";
     }
-    public override void OnKill(PlayerVariable player, int stacks, GameObject Iobject, EnemyHealth enemyHealth)
+    public override void Update(PlayerVariable player, int stacks)
     {
-        player.AttackScale += 0.05f;
+        player.AttackScale = stacks * 2f;
     }
 }
 public class SpawnMissile : CollBase {
@@ -112,4 +112,17 @@ public class AttackHeal : CollBase {
         player.Health += 0.5f * stacks;
     }
 
+}
+public class AttackCoolDown : CollBase {
+    public override string GiveName()
+    {
+        return "Down Attack Cool Down";
+    }
+    public override void Update(PlayerVariable player, int stacks)
+    {
+        if (stacks != 0) {
+            player.RealCoolDown = (float)(player.CoolDownCount * 0.7 * stacks);
+        }
+
+    }
 }
