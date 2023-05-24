@@ -51,7 +51,7 @@ public class PlayerCollections : MonoBehaviour
     {
         foreach (ItemList i in items)
         {
-            i.item.OnKill(Pv, i.stacks, Pv.Missile);
+            i.item.OnKill(Pv, i.stacks, Pv.Missile,Pa.attackValue*3);
         }
     }
 

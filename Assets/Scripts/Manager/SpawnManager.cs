@@ -76,7 +76,12 @@ public class SpawnManager : MonoBehaviour
     }
     IEnumerator SpawnEnemyInWaves()
     {
-        if (WaveInterval <= Waves.Count) {
+        if (WaveInterval > Waves.Count)
+        {
+            yield return null;
+        }
+        if (WaveInterval <= Waves.Count)
+        {
             //round 1 there is 4 kind of enemies
             int E1Num = Waves[WaveInterval].EnemyGroups[0].EnemyCount;
             int E2Num = Waves[WaveInterval].EnemyGroups[1].EnemyCount;
@@ -146,10 +151,10 @@ public class SpawnManager : MonoBehaviour
                 }
 
             }
-
-            yield return new WaitForSeconds(30f);
             WaveInterval += 1;
+            yield return new WaitForSeconds(5f);
             StartCoroutine(SpawnEnemyInWaves());
+
         }
     }
 }

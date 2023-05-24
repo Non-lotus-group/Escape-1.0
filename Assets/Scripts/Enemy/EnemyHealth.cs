@@ -25,11 +25,8 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.name);
-        Debug.Log(collision.tag);
         if (collision.tag == "PlayerBullet") {
             Health -= collision.GetComponent<PBattack>().Attack;
-            Debug.Log(Health);
             GameObject.FindWithTag("Player").GetComponent<PlayerCollections>().CallWhenEnemyHited();
         }
 

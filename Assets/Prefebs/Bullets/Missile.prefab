@@ -96,6 +96,8 @@ GameObject:
   - component: {fileID: 5691266310705374718}
   - component: {fileID: 5691266310705374689}
   - component: {fileID: 5691266310705374688}
+  - component: {fileID: 418047934565031699}
+  - component: {fileID: 9024073444328193335}
   m_Layer: 9
   m_Name: Missile
   m_TagString: PlayerBullet
@@ -219,6 +221,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &418047934565031699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5691266310705374691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d709a49c00340b1aa1123c11849ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9024073444328193335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5691266310705374691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cee73bf29f2894634bb4da83d5e83312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Attack: 0
 --- !u!1 &5691266311299762729
 GameObject:
   m_ObjectHideFlags: 0
