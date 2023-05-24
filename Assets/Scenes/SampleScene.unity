@@ -553,31 +553,179 @@ MonoBehaviour:
   Waves:
   - EnemyGroups:
     - EnemyName: Land1
-      EnemyCount: 0
+      EnemyCount: 6
       HealthTime: 0
       EnemyPrefebs: {fileID: 4035947155723438301, guid: f0c259e24bf254aa4bf4092c91407e11, type: 3}
     - EnemyName: Land2
-      EnemyCount: 0
+      EnemyCount: 6
       HealthTime: 0
       EnemyPrefebs: {fileID: 4035947155723438301, guid: c6ce9a3ae328c438ea28a5efc2f6ad47, type: 3}
     - EnemyName: Fly1
-      EnemyCount: 0
+      EnemyCount: 4
       HealthTime: 0
       EnemyPrefebs: {fileID: 2999706550569332723, guid: d2dbe81f11577414fa4d2a8a233b5322, type: 3}
     - EnemyName: Fly2
-      EnemyCount: 10
+      EnemyCount: 2
       HealthTime: 0
       EnemyPrefebs: {fileID: 2999706550569332723, guid: 2ae0b45194cb54a279b9909579f559e5, type: 3}
-  - EnemyGroups: []
-  - EnemyGroups: []
-  - EnemyGroups: []
-  - EnemyGroups: []
-  - EnemyGroups: []
-  - EnemyGroups: []
-  - EnemyGroups: []
-  - EnemyGroups: []
-  - EnemyGroups: []
-  - EnemyGroups: []
+  - EnemyGroups:
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+  - EnemyGroups:
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+  - EnemyGroups:
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+  - EnemyGroups:
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+  - EnemyGroups:
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+  - EnemyGroups:
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+  - EnemyGroups:
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+  - EnemyGroups:
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+  - EnemyGroups:
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
+  - EnemyGroups:
+    - EnemyName: 
+      EnemyCount: 0
+      HealthTime: 0
+      EnemyPrefebs: {fileID: 0}
   CurrentWaveCount: 0
   Walls:
   - {fileID: 1544927681}
@@ -1027,6 +1175,8 @@ MonoBehaviour:
   Health: 200
   AttackScale: 0
   Missile: {fileID: 6488029177356164274, guid: aac2e068ff6d549d2a9254642b8d083a, type: 3}
+  CoolDownCount: 2
+  RealCoolDown: 0
 --- !u!114 &454838898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1078,8 +1228,8 @@ MonoBehaviour:
   BulletPrefeb: {fileID: 855842585927422155, guid: 254c2123b76264a4ebeca125edc22010, type: 3}
   playerJump: {fileID: 0}
   AttackReady: 1
-  CoolDownCount: 4
   attackValue: 45
+  CoolDownCount: 4
 --- !u!114 &454838901
 MonoBehaviour:
   m_ObjectHideFlags: 0

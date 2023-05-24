@@ -7,7 +7,6 @@ public class EnemyHealth : MonoBehaviour
     public PlayerVariable Player;
     public float MaxHealth;
     public float Health;
-    public List<ItemList> items = new List<ItemList>();
     // Start is called before the first frame update
     void Start()
     {
@@ -19,18 +18,19 @@ public class EnemyHealth : MonoBehaviour
     void Update()
     {
         if (Health <= 0) {
-            GetComponent<PlayerCollections>().CallFromOutside();
+            GameObject.FindWithTag("Player").GetComponent<PlayerCollections>().CallFromOutside();
             Destroy(this.gameObject);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.name);
+        Debug.Log(collision.tag);
         if (collision.tag == "PlayerBullet") {
             Health -= collision.GetComponent<PBattack>().Attack;
-            GetComponent<PlayerCollections>().CallFromOutside();
             Debug.Log(Health);
-            GetComponent<PlayerCollections>().CallWhenEnemyHited();
+            GameObject.FindWithTag("Player").GetComponent<PlayerCollections>().CallWhenEnemyHited();
         }
 
     }

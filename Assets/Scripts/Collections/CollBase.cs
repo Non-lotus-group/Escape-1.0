@@ -20,7 +20,8 @@ public class HealingItem : CollBase
     }
     public override void Update(PlayerVariable player, int stacks)
     {
-        player.Health += stacks * 2;
+        if (stacks != 0) { player.Health += stacks * 2; }
+
     }
 }
 public class JumpStars : CollBase
@@ -86,7 +87,8 @@ public class AttackScale : CollBase
     }
     public override void Update(PlayerVariable player, int stacks)
     {
-        player.AttackScale = stacks * 2f;
+        if (stacks != 0) { player.AttackScale = stacks * 2f; }
+
     }
 }
 public class SpawnMissile : CollBase
