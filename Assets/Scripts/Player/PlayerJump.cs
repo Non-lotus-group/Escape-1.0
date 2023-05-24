@@ -51,7 +51,6 @@ public class PlayerJump : MonoBehaviour
                 ThisRigbody.AddForce(JumpDir * (playerVariable.JumpCount + 1), ForceMode2D.Impulse);
                 playerVariable.JumpCount++;
                 StartCoroutine(SetColliderActive());
-                Debug.Log(playerVariable.JumpCount);
             }
         }
     }
