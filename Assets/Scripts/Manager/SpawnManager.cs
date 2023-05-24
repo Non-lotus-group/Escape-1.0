@@ -27,7 +27,7 @@ public class SpawnManager : MonoBehaviour
     public float RollTime;
     public BoxCollider2D[] Boxs;
     public int WaveInterval = 0;
-
+    public GameObject Boss;
 
     // Start is called before the first frame update
     void Start()
@@ -76,11 +76,8 @@ public class SpawnManager : MonoBehaviour
     }
     IEnumerator SpawnEnemyInWaves()
     {
-        if (WaveInterval > Waves.Count)
-        {
-            yield return null;
-        }
-        if (WaveInterval <= Waves.Count)
+
+        if (WaveInterval <= Waves.Count -1)
         {
             //round 1 there is 4 kind of enemies
             int E1Num = Waves[WaveInterval].EnemyGroups[0].EnemyCount;
@@ -145,6 +142,10 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(5f);
             StartCoroutine(SpawnEnemyInWaves());
 
+        }
+        if (WaveInterval == Waves.Count) {
+            Boss.SetActive(true);
+            yield return null;
         }
     }
 }
