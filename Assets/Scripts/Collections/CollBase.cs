@@ -7,7 +7,7 @@ public abstract class CollBase
     public abstract string GiveName();
     public virtual void Update(PlayerVariable player, int stacks) { }
     public virtual void OnHit(PlayerVariable player, int stacks) { }
-    public virtual void OnKill(PlayerVariable player, int stacks, GameObject Iobject) { }
+    public virtual void OnKill(PlayerVariable player, int stacks, GameObject Iobject,float Damage) { }
     public virtual void OnLand(PlayerVariable player, int stacks, Vector3 PlayerNormal, GameObject Star, float Damage) { }
     public virtual void OnJump(PlayerVariable player, int stacks, bool AbleJump, int jumpCount, Vector3 jumpDir, ref int canJump) { }
 
@@ -36,7 +36,7 @@ public class JumpStars : CollBase
         for (int i = 0; i < SpawnNum; i++)
         {
             GameObject NewStar = GameObject.Instantiate(Star, player.transform.position, Quaternion.identity);
-            float StarForce = Random.Range(2f, 7f);
+            float StarForce = Random.Range(5f, 7f);
             Vector3 StarDir = PlayerNormal + (Random.Range(-3f, 3f) * player.transform.right);
             NewStar.GetComponent<StarBullet>().GetComponent<Rigidbody2D>().AddForce(StarForce * StarDir, ForceMode2D.Impulse);
             NewStar.GetComponent<StarBullet>().Rotation = Random.Range(50f, 280f);
@@ -97,13 +97,14 @@ public class SpawnMissile : CollBase
     {
         return "Spawn Missile";
     }
-    public override void OnKill(PlayerVariable player, int stacks, GameObject Iobject)
+    public override void OnKill(PlayerVariable player, int stacks, GameObject Iobject, float Damage)
     {
         if (stacks != 0)
         {
             for (int i = 0; i < stacks; i++)
             {
                 GameObject Missile = Object.Instantiate(Iobject, player.transform.position, Quaternion.identity);
+                Missile.GetComponent<PBattack>().Attack = Damage;
             }
         }
     }
