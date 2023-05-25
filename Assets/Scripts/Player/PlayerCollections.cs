@@ -27,7 +27,7 @@ public class PlayerCollections : MonoBehaviour
         //AttackCoolDown attackCoolDown = new AttackCoolDown();
         SpawnMissile spawnMissile = new SpawnMissile();
         AttackHeal attackHeal = new AttackHeal();
-        items.Add(new ItemList(spawnMissile, spawnMissile.GiveName(), 0));
+        items.Add(new ItemList(spawnMissile, spawnMissile.GiveName(), 3));
         items.Add(new ItemList(attackHeal, attackHeal.GiveName(), 0));
         items.Add(new ItemList(heal1, heal1.GiveName(), 0));
         items.Add(new ItemList(StarB, StarB.GiveName(), 2));

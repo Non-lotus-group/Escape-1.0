@@ -19,7 +19,7 @@ public class MissileMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Target == null) { StartCoroutine(FindEnemies()); }
     }
     private void FixedUpdate()
     {
@@ -36,7 +36,22 @@ public class MissileMove : MonoBehaviour
 
     IEnumerator FindEnemies()
     {
-        //waiting for finf an enemy
+        GameObject[] TargetArray = GameObject.FindGameObjectsWithTag("Enemy");
+        int Length = TargetArray.Length;
+        if (Length != 0)
+        {
+            Target = TargetArray[Random.Range(0, TargetArray.Length)].transform;
+        }
+        else {
+            yield return new WaitForSeconds(3f);
+            GameObject[] TargetArray2 = GameObject.FindGameObjectsWithTag("Enemy");
+            int Length2 = TargetArray.Length;
+            if (Length2 != 0)
+            {
+                StartCoroutine(FindEnemies());
+            }
+            else { Destroy(gameObject); }
+        }
         yield return null;
     }
 }

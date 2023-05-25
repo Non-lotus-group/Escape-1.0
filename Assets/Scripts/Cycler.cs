@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Cycler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         Destroy(other.gameObject);
     }

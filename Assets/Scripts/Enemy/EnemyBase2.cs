@@ -60,7 +60,7 @@ public class EnemyBase2 : MonoBehaviour
                 float ShootAngle = Mathf.Atan2(ShootDir.y, ShootDir.x) * Mathf.Rad2Deg;
                 //Quaternion BulletRotation = Quaternion.AngleAxis(ShootAngle, Vector3.forward);
                 GameObject instan = Instantiate(Ebullet, transform.position, Quaternion.identity);
-                instan.GetComponent<EnemyBullet>().PlayerDir = ShootDir;
+                instan.GetComponent<EnemyBullet>().PlayerDir = ShootDir * 3f;
                 AttackCoolDown = 0;
             }
         }

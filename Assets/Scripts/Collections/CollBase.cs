@@ -37,7 +37,7 @@ public class JumpStars : CollBase
         {
             GameObject NewStar = GameObject.Instantiate(Star, player.transform.position, Quaternion.identity);
             float StarForce = Random.Range(5f, 7f);
-            Vector3 StarDir = PlayerNormal + (Random.Range(-3f, 3f) * player.transform.right);
+            Vector3 StarDir = PlayerNormal*3f + (Random.Range(-3f, 3f) * player.transform.right);
             NewStar.GetComponent<StarBullet>().GetComponent<Rigidbody2D>().AddForce(StarForce * StarDir, ForceMode2D.Impulse);
             NewStar.GetComponent<StarBullet>().Rotation = Random.Range(50f, 280f);
             NewStar.GetComponent<PBattack>().Attack = Damage;
@@ -93,16 +93,20 @@ public class AttackScale : CollBase
 }
 public class SpawnMissile : CollBase
 {
+    float Poss;
     public override string GiveName()
     {
         return "Spawn Missile";
     }
     public override void OnKill(PlayerVariable player, int stacks, GameObject Iobject, float Damage)
     {
-        if (stacks != 0)
+        Debug.Log("kill");
+        Poss = Random.Range(0, 100) ;
+        if (stacks != 0 && Poss <= 10*stacks)
         {
             for (int i = 0; i < stacks; i++)
             {
+                Debug.Log("shoot");
                 GameObject Missile = Object.Instantiate(Iobject, player.transform.position, Quaternion.identity);
                 Missile.GetComponent<PBattack>().Attack = Damage;
             }

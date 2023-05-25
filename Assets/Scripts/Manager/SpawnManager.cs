@@ -76,8 +76,13 @@ public class SpawnManager : MonoBehaviour
     }
     IEnumerator SpawnEnemyInWaves()
     {
+        if (WaveInterval == Waves.Count - 1)
+        {
+            Boss.SetActive(true);
+            yield return null;
+        }
 
-        if (WaveInterval <= Waves.Count -1)
+        if (WaveInterval < Waves.Count - 1 )
         {
             //round 1 there is 4 kind of enemies
             int E1Num = Waves[WaveInterval].EnemyGroups[0].EnemyCount;
@@ -86,8 +91,6 @@ public class SpawnManager : MonoBehaviour
             int E4Num = Waves[WaveInterval].EnemyGroups[3].EnemyCount;
             List<Vector3> PosList1 = new List<Vector3>();
             List<Vector3> PosList2 = new List<Vector3>();
-            List<Vector3> PosList3 = new List<Vector3>();
-            List<Vector3> PosList4 = new List<Vector3>();
             List<Vector3> NormalList1 = new List<Vector3>();
             List<Vector3> NormalList2 = new List<Vector3>();
             if (E1Num != 0)
@@ -105,13 +108,11 @@ public class SpawnManager : MonoBehaviour
             {
                 for (int i = 0; i < E2Num; i++)
                 {
-                    Debug.Log(WaveInterval);
                     int LandCollider = Random.Range(0, 12);
                     GetSpawnPosOfEnemyLand1(LandCollider, PosList2, NormalList2);
                     GameObject instance = Instantiate(Waves[WaveInterval].EnemyGroups[1].EnemyPrefebs, PosList2[i], Quaternion.identity);
                     EnemyBase2 enemyBase2 = instance.GetComponent<EnemyBase2>();
                     enemyBase2.GrivityDir = NormalList2[i];
-                    Debug.Log(NormalList2[i]);
                 }
 
             }
@@ -139,14 +140,11 @@ public class SpawnManager : MonoBehaviour
 
             }
             WaveInterval += 1;
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(30f);
             StartCoroutine(SpawnEnemyInWaves());
 
         }
-        if (WaveInterval == Waves.Count) {
-            Boss.SetActive(true);
-            yield return null;
-        }
+
     }
 }
 
