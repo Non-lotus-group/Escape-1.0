@@ -17,7 +17,8 @@ public class PBattack : MonoBehaviour
         
     }
 
-    void CallWhenHit() {
+   public void CallWhenHit() {
+        Debug.Log("11");
         if (GetComponent<MissileMove>() != null) {
             this.gameObject.GetComponent<MissileMove>().SelfDestroy();
         }

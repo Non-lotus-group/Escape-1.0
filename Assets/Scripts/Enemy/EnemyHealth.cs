@@ -17,7 +17,8 @@ public class EnemyHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Health <= 0) {
+        if (Health <= 0)
+        {
             GameObject.FindWithTag("Player").GetComponent<PlayerCollections>().CallFromOutside();
             Destroy(this.gameObject);
         }
@@ -25,9 +26,12 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "PlayerBullet") {
-            Health -= collision.GetComponent<PBattack>().Attack;
-            GameObject.FindWithTag("Player").GetComponent<PlayerCollections>().CallWhenEnemyHited();
+        if (collision.tag == "PlayerBullet")
+        {
+            float Dam = collision.GetComponent<PBattack>().Attack;
+            collision.GetComponent<PBattack>().CallWhenHit();
+            Health -= Dam;
+
         }
 
     }

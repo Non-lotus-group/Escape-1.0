@@ -100,13 +100,11 @@ public class SpawnMissile : CollBase
     }
     public override void OnKill(PlayerVariable player, int stacks, GameObject Iobject, float Damage)
     {
-        Debug.Log("kill");
         Poss = Random.Range(0, 100) ;
         if (stacks != 0 && Poss <= 10*stacks)
         {
             for (int i = 0; i < stacks; i++)
             {
-                Debug.Log("shoot");
                 GameObject Missile = Object.Instantiate(Iobject, player.transform.position, Quaternion.identity);
                 Missile.GetComponent<PBattack>().Attack = Damage;
             }
