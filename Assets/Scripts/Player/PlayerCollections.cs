@@ -13,6 +13,7 @@ public class PlayerCollections : MonoBehaviour
     public float Health;
     public GameObject StarBullet;
     int JumpRef;
+    public GameObject ValueOfHeal;
     // Start is called before the first frame update
     void Start()
     {
@@ -67,7 +68,7 @@ public class PlayerCollections : MonoBehaviour
     {
         foreach (ItemList i in items)
         {
-            i.item.Update(Pv, i.stacks);
+            i.item.OnHeal(Pv, i.stacks, ValueOfHeal);
         }
         yield return new WaitForSeconds(1);
         StartCoroutine(CallItemUpdate());

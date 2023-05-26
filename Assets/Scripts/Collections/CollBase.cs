@@ -7,9 +7,10 @@ public abstract class CollBase
     public abstract string GiveName();
     public virtual void Update(PlayerVariable player, int stacks) { }
     public virtual void OnHit(PlayerVariable player, int stacks) { }
-    public virtual void OnKill(PlayerVariable player, int stacks, GameObject Iobject,float Damage) { }
+    public virtual void OnKill(PlayerVariable player, int stacks, GameObject Iobject, float Damage) { }
     public virtual void OnLand(PlayerVariable player, int stacks, Vector3 PlayerNormal, GameObject Star, float Damage) { }
     public virtual void OnJump(PlayerVariable player, int stacks, bool AbleJump, int jumpCount, Vector3 jumpDir, ref int canJump) { }
+    public virtual void OnHeal(PlayerVariable player, int stacks, GameObject Show) { }
 
 }
 public class HealingItem : CollBase
@@ -18,11 +19,17 @@ public class HealingItem : CollBase
     {
         return "Healing Items";
     }
-    public override void Update(PlayerVariable player, int stacks)
+    public override void OnHeal(PlayerVariable player, int stacks, GameObject Show)
     {
-        if (stacks != 0) { player.Health += stacks * 2; }
-
+        if (stacks != 0)
+        {
+            Debug.Log("instance");
+            player.Health += stacks * 2;
+            GameObject Instance = GameObject.Instantiate(Show, player.transform.position, Quaternion.identity);
+            Instance.GetComponent<ShowHeal>().healValue = stacks * 2;
+        }
     }
+
 }
 public class JumpStars : CollBase
 {
@@ -37,7 +44,7 @@ public class JumpStars : CollBase
         {
             GameObject NewStar = GameObject.Instantiate(Star, player.transform.position, Quaternion.identity);
             float StarForce = Random.Range(5f, 7f);
-            Vector3 StarDir = PlayerNormal*3f + (Random.Range(-3f, 3f) * player.transform.right);
+            Vector3 StarDir = PlayerNormal * 3f + (Random.Range(-3f, 3f) * player.transform.right);
             NewStar.GetComponent<StarBullet>().GetComponent<Rigidbody2D>().AddForce(StarForce * StarDir, ForceMode2D.Impulse);
             NewStar.GetComponent<StarBullet>().Rotation = Random.Range(50f, 280f);
             NewStar.GetComponent<PBattack>().Attack = Damage;
@@ -100,8 +107,8 @@ public class SpawnMissile : CollBase
     }
     public override void OnKill(PlayerVariable player, int stacks, GameObject Iobject, float Damage)
     {
-        Poss = Random.Range(0, 100) ;
-        if (stacks != 0 && Poss <= 10*stacks)
+        Poss = Random.Range(0, 100);
+        if (stacks != 0 && Poss <= 10 * stacks)
         {
             for (int i = 0; i < stacks; i++)
             {
