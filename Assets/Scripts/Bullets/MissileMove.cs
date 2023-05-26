@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MissileMove : MonoBehaviour
 {
+    public GameObject Player;
     public Transform Target;
     public GameObject[] Enemies;
     public float Speed = 5f;
@@ -14,6 +15,7 @@ public class MissileMove : MonoBehaviour
     {
         StartCoroutine(FindEnemies());
         Rb = GetComponent<Rigidbody2D>();
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -23,11 +25,21 @@ public class MissileMove : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Vector2 Dir = (Vector2)Target.position - Rb.position;
-        Dir.Normalize();
-        float RotationAmout = Vector3.Cross(Dir, transform.up).z;
-        Rb.angularVelocity = -RotationAmout * RotateSpeed;
-        Rb.velocity = transform.up * Speed;
+        if (Target)
+        {
+            Vector2 Dir = (Vector2)Target.position - Rb.position;
+            Dir.Normalize();
+            float RotationAmout = Vector3.Cross(Dir, transform.up).z;
+            Rb.angularVelocity = -RotationAmout * RotateSpeed;
+            Rb.velocity = transform.up * Speed;
+        }
+        else {
+            Vector2 Dir = (Vector2)Player.transform.position - Rb.position;
+            Dir.Normalize();
+            float RotationAmout = Vector3.Cross(Dir, transform.up).z;
+            Rb.angularVelocity = -RotationAmout * RotateSpeed;
+            Rb.velocity = transform.up * Speed;
+        }
     }
     public void SelfDestroy()
     {
