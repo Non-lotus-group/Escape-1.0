@@ -31,7 +31,6 @@ public class EnemyHealth : MonoBehaviour
         
         if (collision.tag == "PlayerBullet")
         {
-            Debug.Log("11");
             float Dam = collision.GetComponent<PBattack>().Attack;
             collision.GetComponent<PBattack>().CallWhenHit();
             Health -= Dam;

@@ -6,7 +6,7 @@ public class FlyShootEnemy : MonoBehaviour
 {
     public GameObject Ebullet;
     public float AttackCoolDown = 3f;
-    public float attack = 5f;
+    public float attack = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +20,7 @@ public class FlyShootEnemy : MonoBehaviour
     }
     void Attack() {
         AttackCoolDown += Time.deltaTime;
-        if (AttackCoolDown >= 2)
+        if (AttackCoolDown >= Random.Range(5,8))
         {
             if (Ebullet != null)
             {

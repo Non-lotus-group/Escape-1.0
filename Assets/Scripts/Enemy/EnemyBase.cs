@@ -61,14 +61,32 @@ public class EnemyBase : MonoBehaviour
         {
             if (Ebullet != null)
             {
+                Debug.Log("11");
                 Vector3 PlayerPos = GameObject.FindWithTag("Player").transform.position;
                 Vector3 ShootDir = (PlayerPos - transform.position).normalized;
-                GameObject instan = Instantiate(Ebullet, transform.position, Quaternion.identity);
+                GameObject instan = GameObject.Instantiate(Ebullet, transform.position, Quaternion.identity);
                 instan.transform.Translate(ShootDir * 2f);
                 instan.GetComponent<EnemyBullet>().Attack = attack;
+                Debug.Log(instan.GetComponent<EnemyBullet>().Attack);
             }
 
         }
 
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            other.GetComponent<PlayerVariable>().Health -= attack;
+            Debug.Log("11");
+            StartCoroutine(HeartPlayer());
+        }
+
+    }
+
+  
+
+    IEnumerator HeartPlayer() {
+        yield return new WaitForSeconds(2f);
     }
 }

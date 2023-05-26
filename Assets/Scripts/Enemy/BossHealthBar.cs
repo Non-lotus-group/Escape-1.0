@@ -11,7 +11,11 @@ public class BossHealthBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemyHealth = GetComponent<EnemyHealth>();
+        if (!enemyHealth)
+        {
+            enemyHealth = GetComponent<EnemyHealth>();
+        }
+
     }
 
     // Update is called once per frame
@@ -20,7 +24,7 @@ public class BossHealthBar : MonoBehaviour
         Health = enemyHealth.Health;
         MaxHealth = enemyHealth.MaxHealth;
         float Rate = Health / MaxHealth;
-        Bar.transform.localPosition = new Vector3((float)(-0.5 * (1-Rate)), 0, -0.1f);
+        Bar.transform.localPosition = new Vector3((float)(-0.5 * (1 - Rate)), 0, -0.1f);
         Bar.transform.localScale = new Vector3(Rate, 1, 1);
     }
 }

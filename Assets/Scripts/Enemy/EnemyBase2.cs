@@ -9,6 +9,7 @@ public class EnemyBase2 : MonoBehaviour
     public GameObject Ebullet;
     public float AttackCoolDown;
     public bool IsWalk = false;
+    public float attack = 0.2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +52,7 @@ public class EnemyBase2 : MonoBehaviour
     public void Attack()
     {
         AttackCoolDown += Time.deltaTime;
-        if (AttackCoolDown >= 2)
+        if (AttackCoolDown >= Random.Range(4,6))
         {
             if (Ebullet != null)
             {
@@ -61,6 +62,7 @@ public class EnemyBase2 : MonoBehaviour
                 //Quaternion BulletRotation = Quaternion.AngleAxis(ShootAngle, Vector3.forward);
                 GameObject instan = Instantiate(Ebullet, transform.position, Quaternion.identity);
                 instan.GetComponent<EnemyBullet>().PlayerDir = ShootDir * 3f;
+                instan.GetComponent<EnemyBullet>().Attack = attack;
                 AttackCoolDown = 0;
             }
         }
