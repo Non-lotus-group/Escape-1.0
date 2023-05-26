@@ -350,6 +350,7 @@ GameObject:
   - component: {fileID: -5216353553553496183}
   - component: {fileID: 8962268284640290873}
   - component: {fileID: 2957195647392153897}
+  - component: {fileID: 6476740066010370043}
   m_Layer: 7
   m_Name: SelfExplodeFly
   m_TagString: Enemy
@@ -439,7 +440,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -478,6 +479,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3002aa79cef4426a792d3eab4d5cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  Speed: 5
+  RotateSpeed: 90
+  Rb: {fileID: 0}
+  C1: {fileID: -161456272809627082}
+  C2: {fileID: 6476740066010370043}
+  Dir: {x: 0, y: 0}
 --- !u!114 &2957195647392153897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,13 +493,30 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2999706550569332723}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0d8a6cfcebf24e689ad96f720c8e292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
   MaxHealth: 100
   Health: 100
+--- !u!58 &6476740066010370043
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2999706550569332723}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &3198002989996822920
 GameObject:
   m_ObjectHideFlags: 0

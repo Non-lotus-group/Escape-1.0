@@ -8,6 +8,7 @@ public class EnemyBase : MonoBehaviour
     public Rigidbody2D ThisRigidbody;
     public bool AbleWalk;
     public GameObject Ebullet;
+    public float attack = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +65,7 @@ public class EnemyBase : MonoBehaviour
                 Vector3 ShootDir = (PlayerPos - transform.position).normalized;
                 GameObject instan = Instantiate(Ebullet, transform.position, Quaternion.identity);
                 instan.transform.Translate(ShootDir * 2f);
+                instan.GetComponent<EnemyBullet>().Attack = attack;
             }
 
         }

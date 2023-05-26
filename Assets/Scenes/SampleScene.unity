@@ -567,7 +567,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184141925}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 390137dce8a734f8f984de4bd35fbdd4, type: 3}
   m_Name: 
@@ -1694,7 +1694,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454838891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -11.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1873,6 +1873,7 @@ MonoBehaviour:
   Pj: {fileID: 0}
   Health: 0
   StarBullet: {fileID: 7424217877405778369, guid: dc23591656fa24b66ac0c98b5fe7bfb5, type: 3}
+  ValueOfHeal: {fileID: 4802238008133363630, guid: c2f922936cccf4cb7b77000b652494c3, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

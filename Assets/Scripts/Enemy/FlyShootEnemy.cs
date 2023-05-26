@@ -6,6 +6,7 @@ public class FlyShootEnemy : MonoBehaviour
 {
     public GameObject Ebullet;
     public float AttackCoolDown = 3f;
+    public float attack = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,7 @@ public class FlyShootEnemy : MonoBehaviour
                 Vector3 PlayerDir = (GameObject.FindWithTag("Player").transform.position - transform.position).normalized;
                 GameObject instance = GameObject.Instantiate(Ebullet, transform.position, Quaternion.identity);
                 instance.GetComponent<EnemyBullet>().PlayerDir = PlayerDir;
+                instance.GetComponent<EnemyBullet>().Attack = attack;
                 AttackCoolDown = 0;
             }
         }

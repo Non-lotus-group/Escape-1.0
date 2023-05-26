@@ -23,6 +23,6 @@ public class PlayerVariable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // GetComponent<PlayerAttack>().CoolDownCount = RealCoolDown;
+        // GetComponent<PlayerAttack>().CoolDownCount = RealCoolDown;
     }
 }

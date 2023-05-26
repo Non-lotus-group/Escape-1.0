@@ -23,7 +23,6 @@ public class HealingItem : CollBase
     {
         if (stacks != 0)
         {
-            Debug.Log("instance");
             player.Health += stacks * 2;
             GameObject Instance = GameObject.Instantiate(Show, player.transform.position, Quaternion.identity);
             Instance.GetComponent<ShowHeal>().healValue = stacks * 2;
@@ -39,19 +38,22 @@ public class JumpStars : CollBase
     }
     public override void OnLand(PlayerVariable player, int stacks, Vector3 PlayerNormal, GameObject Star, float Damage)
     {
-        int SpawnNum = Random.Range(stacks, stacks + 3);
-        for (int i = 0; i < SpawnNum; i++)
+        if (stacks != 0)
         {
-            GameObject NewStar = GameObject.Instantiate(Star, player.transform.position, Quaternion.identity);
-            float StarForce = Random.Range(5f, 7f);
-            Vector3 StarDir = PlayerNormal * 3f + (Random.Range(-3f, 3f) * player.transform.right);
-            NewStar.GetComponent<StarBullet>().GetComponent<Rigidbody2D>().AddForce(StarForce * StarDir, ForceMode2D.Impulse);
-            NewStar.GetComponent<StarBullet>().Rotation = Random.Range(50f, 280f);
-            NewStar.GetComponent<PBattack>().Attack = Damage;
-            NewStar.GetComponent<SpriteRenderer>().color = Random.Range(-1, 1) < 0 ? Color.red : Color.yellow;
-            float ScaleOfStar = Random.Range(0.8f, 2f);
-            NewStar.transform.localScale = new Vector3(ScaleOfStar, ScaleOfStar, ScaleOfStar);
-            // NewStar's color will change or load colors on list or shader
+            int SpawnNum = Random.Range(stacks, stacks + 3);
+            for (int i = 0; i < SpawnNum; i++)
+            {
+                GameObject NewStar = GameObject.Instantiate(Star, player.transform.position, Quaternion.identity);
+                float StarForce = Random.Range(5f, 7f);
+                Vector3 StarDir = PlayerNormal * 3f + (Random.Range(-3f, 3f) * player.transform.right);
+                NewStar.GetComponent<StarBullet>().GetComponent<Rigidbody2D>().AddForce(StarForce * StarDir, ForceMode2D.Impulse);
+                NewStar.GetComponent<StarBullet>().Rotation = Random.Range(50f, 280f);
+                NewStar.GetComponent<PBattack>().Attack = Damage;
+                NewStar.GetComponent<SpriteRenderer>().color = Random.Range(-1, 1) < 0 ? Color.red : Color.yellow;
+                float ScaleOfStar = Random.Range(0.8f, 2f);
+                NewStar.transform.localScale = new Vector3(ScaleOfStar, ScaleOfStar, ScaleOfStar);
+                // NewStar's color will change or load colors on list or shader
+            }
         }
     }
 }
@@ -124,9 +126,14 @@ public class AttackHeal : CollBase
     {
         return "Heal When Attack";
     }
-    public override void OnHit(PlayerVariable player, int stacks)
+    public override void OnHeal(PlayerVariable player, int stacks, GameObject Show)
     {
-        player.Health += 0.5f * stacks;
+        if (stacks != 0)
+        {
+            player.Health += stacks * 0.4f * player.GetComponent<PlayerAttack>().attackValue;
+            GameObject Instance = GameObject.Instantiate(Show, player.transform.position, Quaternion.identity);
+            Instance.GetComponent<ShowHeal>().healValue = stacks * 0.4f * player.GetComponent<PlayerAttack>().attackValue;
+        }
     }
 
 }
