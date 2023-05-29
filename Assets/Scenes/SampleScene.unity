@@ -1434,6 +1434,7 @@ GameObject:
   - component: {fileID: 345280862}
   - component: {fileID: 345280865}
   - component: {fileID: 345280866}
+  - component: {fileID: 345280867}
   m_Layer: 7
   m_Name: Circle
   m_TagString: Untagged
@@ -1577,6 +1578,20 @@ MonoBehaviour:
   Health: 0
   MaxHealth: 0
   Bar: {fileID: 340865261}
+--- !u!114 &345280867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345280860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fd9f18be77a6441caa6eaf17e7a9918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackValue: 0
+  Bullet: {fileID: 2585020492166466479, guid: 47c163c80b6c6480a964adf2da2c6ba8, type: 3}
 --- !u!1 &345714580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2208,6 +2223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerVariable: {fileID: 0}
+  playerAttack: {fileID: 0}
   ThisRigbody: {fileID: 0}
   MousePos: {x: 0, y: 0}
   SelfPos: {x: 0, y: 0}
@@ -6117,6 +6133,7 @@ GameObject:
   - component: {fileID: 1728334256}
   - component: {fileID: 1728334255}
   - component: {fileID: 1728334259}
+  - component: {fileID: 1728334260}
   m_Layer: 7
   m_Name: Circle (2)
   m_TagString: Untagged
@@ -6260,6 +6277,18 @@ MonoBehaviour:
   Health: 0
   MaxHealth: 0
   Bar: {fileID: 1440000866}
+--- !u!114 &1728334260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728334253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88353a4fe1c04e85b234bb9d24a01d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1845470928
 GameObject:
   m_ObjectHideFlags: 0
@@ -6587,6 +6616,7 @@ GameObject:
   - component: {fileID: 1974100738}
   - component: {fileID: 1974100737}
   - component: {fileID: 1974100741}
+  - component: {fileID: 1974100742}
   m_Layer: 7
   m_Name: Circle (3)
   m_TagString: Untagged
@@ -6730,6 +6760,18 @@ MonoBehaviour:
   Health: 0
   MaxHealth: 0
   Bar: {fileID: 21598863}
+--- !u!114 &1974100742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974100735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b4ffbd5cedf48648eb8bf222751b94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2003180000
 GameObject:
   m_ObjectHideFlags: 0
@@ -6846,7 +6888,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2003202159
 Transform:
   m_ObjectHideFlags: 0
@@ -6981,6 +7023,7 @@ GameObject:
   - component: {fileID: 2138707793}
   - component: {fileID: 2138707792}
   - component: {fileID: 2138707796}
+  - component: {fileID: 2138707797}
   m_Layer: 7
   m_Name: Circle (1)
   m_TagString: Untagged
@@ -7124,3 +7167,15 @@ MonoBehaviour:
   Health: 0
   MaxHealth: 0
   Bar: {fileID: 809320833}
+--- !u!114 &2138707797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138707790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c9ba9a4388954083aa3418576e03edd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

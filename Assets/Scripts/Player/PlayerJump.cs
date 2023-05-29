@@ -61,10 +61,10 @@ public class PlayerJump : MonoBehaviour
         if (playerVariable.IsJump == true)
         {
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, JumpAngle - 90));
-            playerAttack.attackValue *= 1.5f;
+            playerAttack.attackValue = 80f;
         }
         else {
-            playerAttack.attackValue /= 1.5f;
+            playerAttack.attackValue = 45f;
         }
 
     }
