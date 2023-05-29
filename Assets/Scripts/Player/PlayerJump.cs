@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerJump : MonoBehaviour
 {
     public PlayerVariable playerVariable;
+    public PlayerAttack playerAttack;
     public Rigidbody2D ThisRigbody;
     public Vector2 MousePos;
     public Vector2 SelfPos;
@@ -15,6 +16,7 @@ public class PlayerJump : MonoBehaviour
     {
         playerVariable = GetComponent<PlayerVariable>();
         ThisRigbody = GetComponent<Rigidbody2D>();
+        playerAttack = GetComponent<PlayerAttack>();
     }
 
     // Update is called once per frame
@@ -59,6 +61,10 @@ public class PlayerJump : MonoBehaviour
         if (playerVariable.IsJump == true)
         {
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, JumpAngle - 90));
+            playerAttack.attackValue *= 1.5f;
+        }
+        else {
+            playerAttack.attackValue /= 1.5f;
         }
 
     }
