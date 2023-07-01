@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// manage enemies' bullet 
 public class EnemyBullet : MonoBehaviour
 {
     public Vector3 PlayerDir;
